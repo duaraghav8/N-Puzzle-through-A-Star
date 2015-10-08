@@ -56,18 +56,19 @@ def getSequenceInfo (dim, grid):
 
 	return (current [1], current [2]);
 
-dim = int (input ());
-row = numCount = 0;
-grid = [[] for i in range (dim)];
+if (__name__ == '__main__'):
+	dim = int (input ());
+	row = numCount = 0;
+	grid = [[] for i in range (dim)];
 
-for i in range (dim ** 2):
-	grid [row].append (int (input ()));
-	numCount += 1;
+	for i in range (dim ** 2):
+		grid [row].append (int (input ()));
+		numCount += 1;
 
-	if (numCount % dim == 0):
-		row += 1;
-		numCount = 0;
+		if (numCount % dim == 0):
+			row += 1;
+			numCount = 0;
 
-seqCount, sequence = getSequenceInfo (dim, grid);
-print (seqCount);
-print ('\n'.join (sequence));
+	seqCount, sequence = getSequenceInfo (dim, grid);
+	print (seqCount);
+	print ('\n'.join (sequence));
