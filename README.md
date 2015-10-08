@@ -1,4 +1,4 @@
-This Python 3.4 implementation solves the N-Puzzle using the A* Search Algorithm with the Hamming function as its admissible Heuristic. The program is extremely slow though. Even for a 3x3 Puzzle, it took about 4 seconds to solve it.
+This Python 3.4 implementation solves the N-Puzzle using the A* Search Algorithm with the Manhattan (Turns out that Manhattan is a zillion times more powerfull than Hamming) function as its admissible Heuristic.
 
 It uses the heapq Data Structure to simulate a priority queue.
 
