@@ -7,6 +7,19 @@ def hamming (dim, grid, target):
 				counter += 1;
 	return (counter);
 
+def manhattan (dim, grid, target):
+	result = 0;
+	for i in range (dim):
+		for j in range (dim):
+			if (target [i] [j] == 0):
+				continue;
+			for l in range (dim):
+				for m in range (dim):
+					if (target [i] [j] == grid [l] [m]):
+						result += (abs (m - j) + abs (l - i));
+						break;
+	return (result);
+
 def getNextStates (dim, current):
 	nextStates = [];
 	empty = None;
@@ -43,7 +56,7 @@ def getNextStates (dim, current):
 
 def getSequenceInfo (dim, grid):
 	target = [ [j for j in range (i, i + dim)] for i in range (0, (dim * (dim - 1)) + 1, dim) ];
-	current = (hamming (dim, grid, target), 0, [], grid)
+	current = (manhattan (dim, grid, target), 0, [], grid)
 	stateTree = [current];
 
 	heapify (stateTree);
@@ -52,7 +65,7 @@ def getSequenceInfo (dim, grid):
 #		print (current);
 
 		for state in getNextStates (dim, current [-1]):
-			heappush (stateTree, (hamming (dim, state [1], target) + current [1] + 1, current [1] + 1, current [2] + [state [0]], state [1]));
+			heappush (stateTree, (manhattan (dim, state [1], target) + current [1] + 1, current [1] + 1, current [2] + [state [0]], state [1]));
 
 	return (current [1], current [2]);
 
